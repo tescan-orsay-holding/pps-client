@@ -1,0 +1,52 @@
+@import './variables.scss';
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  background-color: $lightGray;
+
+  &,
+  p,
+  a {
+    color: white;
+  }
+}
+
+.page {
+  padding: 30px 5vw;
+}
+
+.page__title {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tbody {
+    tr {
+      cursor: pointer;
+    }
+  }
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border: 1px white solid;
+    // border-bottom: 1px solid #ddd;
+  }
+
+  th {
+  }
+
+  td {
+  }
+}
