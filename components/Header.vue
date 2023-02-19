@@ -5,7 +5,9 @@
         v-for="(link, i) in links"
         :key="i"
         class="header__link"
-        :class="{ 'header__link--active': $route.name === link.path.name }"
+        :class="{
+          'header__link--active': link.activeRoutes.includes($route.name),
+        }"
         :to="link.path"
         >{{ link.text }}</nuxt-link
       >
@@ -27,12 +29,14 @@ export default defineComponent({
           path: {
             name: 'index',
           },
+          activeRoutes: ['index'],
         },
         {
           text: 'Users',
           path: {
             name: 'users',
           },
+          activeRoutes: ['users', 'users-id'],
         },
       ],
     }
