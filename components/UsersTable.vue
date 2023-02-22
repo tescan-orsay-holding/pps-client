@@ -1,18 +1,18 @@
 <template>
   <div v-if="users.length" class="table-container">
     <header class="table-header">
-      <div class="table-header-left">
+      <div class="table-header__left">
         <template v-if="checkedAmount > 0">
-          <p class="table-header-checked-amount">
+          <p class="table-header__checked-amount">
             {{ checkedAmount }}
             {{ checkedAmount === 1 ? 'user' : 'users' }} selected
           </p>
         </template>
         <template v-else>
-          <p class="table-header-title">User Table</p>
+          <p class="table-header__title">User Table</p>
         </template>
       </div>
-      <div class="table-header-right">
+      <div class="table-header__right">
         <div class="icon-button plus" @click="openAddModal()"></div>
         <div
           v-if="checkedAmount > 0"
@@ -124,7 +124,7 @@ export default defineComponent({
 
         this.$store.commit('store/setLoading', false)
       } catch (error) {
-        alert(error.response.data.error.message)
+        alert(error?.response?.data?.error?.message || error)
         this.$store.commit('store/setLoading', false)
       }
     },

@@ -103,7 +103,7 @@ export default defineComponent({
         this.$store.commit('store/closeModals')
         this.$root.$emit('refresh-user-detail')
       } catch (error) {
-        alert(error.response.data.error.message)
+        alert(error?.response?.data?.error?.message || error)
         this.$store.commit('store/setLoading', false)
       }
     },

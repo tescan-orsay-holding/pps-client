@@ -61,7 +61,7 @@ export default defineComponent({
         this.$store.commit('store/setLoading', false)
         this.$root.$emit('refresh-users')
       } catch (error) {
-        alert(error.response.data.error.message)
+        alert(error?.response?.data?.error?.message || error)
         this.$store.commit('store/setLoading', false)
       }
     },
