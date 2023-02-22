@@ -1,13 +1,11 @@
 <template>
   <div class="page">
-    <div class="page__title">{{ $route.params }}</div>
+    <div class="container">
+      <h1 class="page__title">User Detail</h1>
 
-    <div class="user">
-      <div class="user__info">
-        <p>{{ user.id }}</p>
-        <p>{{ user.username }}</p>
-        <p>{{ user.password }}</p>
-        <p>{{ user.role }}</p>
+      <div v-if="user" class="user">
+        <UserInfo :originalUser="user" />
+        <ACLTable :user="user" />
       </div>
     </div>
   </div>
@@ -15,31 +13,57 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { User } from '../../types/types'
+
+type Data = {
+  user: User | null
+}
 
 export default defineComponent({
   components: {},
   props: {},
-  data() {
+  data(): Data {
     return {
-      user: {
-        id: '1523',
-        username: 'alaadslal',
-        password: 'hesed123',
-        role: 'admin',
-        rules: [
-          {
-            username: 'tensor-f2',
-            topic: 'nanoscope/tensor-f3',
-            rw: 4,
-          },
-        ],
-      },
+      user: null,
     }
   },
-  mounted() {},
+  mounted() {
+    this.getUserDetail()
+
+    this.$root.$on('refresh-user-detail', () => {
+      this.getUserDetail()
+    })
+  },
+  beforeDestroy() {
+    this.$root.$off('refresh-user-detail')
+  },
   created() {},
   computed: {},
-  methods: {},
+  methods: {
+    async getUserDetail() {
+      this.$store.commit('store/setLoading', true)
+
+      try {
+        const res = await this.$axios.get(
+          `${this.$store.state.store.apiUrl}/api/users/${this.$route.params.id}`
+        )
+        const user = res.data.user
+        this.user = {
+          ...user,
+          acl: user.acl.map((acl) => ({
+            ...acl,
+            isChecked: false,
+          })),
+        }
+        this.originalUser = this.user
+
+        this.$store.commit('store/setLoading', false)
+      } catch (error) {
+        alert(error?.response?.data?.error?.message || error)
+        this.$store.commit('store/setLoading', false)
+      }
+    },
+  },
   watch: {},
 })
 </script>

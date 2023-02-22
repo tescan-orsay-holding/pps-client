@@ -2,11 +2,13 @@
   <div
     class="modal-wrapper"
     :class="{
-      active: hasActiveModal,
+      'modal-wrapper--active': hasActiveModal,
     }"
   >
     <DeleteUserModal :isActive="modals.deleteUser.isActive" />
     <AddUserModal :isActive="modals.addUser.isActive" />
+    <AddACLModal :isActive="modals.addAcl.isActive" />
+    <DeleteACLModal :isActive="modals.deleteAcl.isActive" />
   </div>
 </template>
 
@@ -22,10 +24,10 @@ export default defineComponent({
   mounted() {},
   created() {},
   computed: {
-    modals(): any {
+    modals() {
       return this.$store.state.store.modals
     },
-    hasActiveModal(): boolean {
+    hasActiveModal() {
       return Object.keys(this.modals).some((key) => this.modals[key].isActive)
     },
   },

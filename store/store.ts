@@ -1,14 +1,19 @@
-type ModalType = 'deleteUser' | 'addUser'
+type ModalType = 'deleteUser' | 'addUser' | 'addAcl' | 'deleteAcl'
 
 type Modal = {
   isActive: boolean
+  [key: string]: any
 }
 
 type State = {
+  apiUrl: string
+  isLoading: boolean
   modals: { [key in ModalType]: Modal }
 }
 
 export const state = (): State => ({
+  apiUrl: 'http://localhost:5000',
+  isLoading: false,
   modals: {
     deleteUser: {
       isActive: false,
@@ -16,10 +21,19 @@ export const state = (): State => ({
     addUser: {
       isActive: false,
     },
+    addAcl: {
+      isActive: false,
+    },
+    deleteAcl: {
+      isActive: false,
+    },
   },
 })
 
 export const mutations = {
+  setLoading(state: State, boolean: boolean) {
+    state.isLoading = boolean
+  },
   openModal(state: State, openKey: ModalType) {
     Object.keys(state.modals).forEach((key) => {
       state.modals[key as ModalType].isActive = openKey === key
@@ -31,24 +45,3 @@ export const mutations = {
     })
   },
 }
-
-//   export const getters = {
-//     getCounter(state: State) {
-//       return state.counter
-//     }
-//   }
-
-//   export const mutations = {
-//     increment(state) {
-//       state.counter++
-//     }
-//   }
-
-//   export const actions = {
-//     async fetchCounter({ state }) {
-//       // make request
-//       const res = { data: 10 };
-//       state.counter = res.data;
-//       return res.data;
-//     }
-//   }

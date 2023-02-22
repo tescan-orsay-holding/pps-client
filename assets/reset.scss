@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   vertical-align: baseline;
   box-sizing: border-box;
+  color: white;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -30,25 +31,25 @@ body {
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important;
   scroll-behavior: smooth;
-  // overflow-x: hidden;
+  overflow-x: hidden;
   max-width: 100%;
-  overflow: hidden !important;
+
+  &,
+  p,
+  a {
+    font-size: 16px;
+    line-height: 150%;
+  }
 }
 
 body {
-  // overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 ol,
 ul,
 li {
   list-style: none;
-}
-
-p,
-a {
-  font-size: 16px;
-  line-height: 130%;
 }
 
 a {

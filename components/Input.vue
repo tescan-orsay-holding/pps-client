@@ -1,14 +1,12 @@
 <template>
-  <label class="input-container">
-    <p v-if="label" class="input-label">{{ label }}</p>
+  <label class="input">
+    <p v-if="label" class="input__label">{{ label }}</p>
     <input
-      class="input"
-      :type="type || 'text'"
+      class="input__field"
       :value="value"
-      @input="handleInputChange($event)"
+      v-bind="inputAttrs"
+      @input="$emit('input', $event)"
     />
-
-    <p v-if="error" class="input-error">{{ error }}</p>
   </label>
 </template>
 
@@ -18,9 +16,8 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   components: {},
   props: {
-    type: String,
     label: String,
-    error: String,
+    inputAttrs: Object,
     value: [String, Number],
   },
   data() {
@@ -29,11 +26,7 @@ export default defineComponent({
   mounted() {},
   created() {},
   computed: {},
-  methods: {
-    handleInputChange(e: any) {
-      this.$emit('input', e.target.value)
-    },
-  },
+  methods: {},
   watch: {},
 })
 </script>

@@ -1,100 +1,40 @@
 @import './variables.scss';
 @import './reset.scss';
 
+@import './spinner.scss';
 @import './checkbox.scss';
 @import './button.scss';
 @import './input.scss';
+@import './select.scss';
 @import './modal.scss';
-
+@import './table.scss';
 @import './header.scss';
+@import './user-detail.scss';
 
 .app {
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: $lightGray;
-
-  &,
-  p,
-  a {
-    color: white;
-  }
+  min-height: 100vh;
+  background-color: $dark-gray;
 }
 
 .page {
-  padding: 30px 5vw;
+  padding: 50px 0;
 }
 
 .page__title {
   font-size: 32px;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-.table-container {
-  overflow-x: auto;
-}
+// .info-password {
+//   display: flex;
+//   align-items: center;
+// }
 
-.table-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  padding: 10px 10px;
-  border: 1px white solid;
-  border-bottom: 0;
-}
-
-.table-header-left {
-}
-
-.table-header-checked-amount {
-}
-
-.table-header-title {
-}
-
-.table-header-right {
-  display: flex;
-  // column-gap: 10px;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-
-  tbody {
-    margin-top: 30px;
-
-    tr {
-      cursor: pointer;
-
-      &:hover {
-        background-color: $darkGray;
-      }
-
-      th,
-      td {
-        &:first-child {
-          width: $checkbox-size;
-          box-sizing: content-box;
-        }
-      }
-    }
-  }
-
-  th,
-  td {
-    padding: 10px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px white solid;
-    // border-bottom: 1px solid #ddd;
-  }
-
-  th {
-  }
-
-  td {
-  }
+.container {
+  width: 90vw;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }

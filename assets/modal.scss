@@ -4,7 +4,7 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   pointer-events: none;
   background-color: rgba(black, 0.5);
   visibility: hidden;
@@ -12,7 +12,7 @@
   transition: 300ms all;
   z-index: 100;
 
-  &.active {
+  &.modal-wrapper--active {
     pointer-events: all;
     opacity: 1;
     visibility: visible;
@@ -24,21 +24,20 @@
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%) scale(0);
-  min-width: 300px;
+  width: 300px;
   min-height: 50px;
   max-width: 95vw;
   max-height: 95vh;
   padding: 20px;
   border-radius: 10px;
-  //   border: 1px white solid;
-  overflow-y: auto;
-  background: $lightGray;
+  overflow-y: visible;
+  background: $light-gray;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: 300ms all;
 
-  &.active {
+  &.modal--active {
     transform: translateX(-50%) translateY(-50%) scale(1);
     visibility: visible;
     opacity: 1;
@@ -53,6 +52,8 @@
 }
 
 .modal__title {
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .modal__close {
@@ -76,5 +77,34 @@
 
   &::after {
     transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  }
+}
+
+.modal__content {
+  padding-top: 20px;
+
+  .button {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .input {
+    margin-bottom: 10px;
+  }
+}
+
+.modal--add-user {
+}
+
+.modal--delete-user {
+  .delete-user-message {
+  }
+}
+
+.modal--add-acl {
+}
+
+.modal--delete-acl {
+  .delete-acl-message {
   }
 }

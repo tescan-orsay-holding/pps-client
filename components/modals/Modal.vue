@@ -1,9 +1,12 @@
 <template>
   <div
     class="modal"
-    :class="{
-      active: isActive,
-    }"
+    :class="[
+      {
+        'modal--active': isActive,
+      },
+      className,
+    ]"
   >
     <header class="modal__header">
       <p class="modal__title">{{ title }}</p>
@@ -22,6 +25,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   components: {},
   props: {
+    className: String,
     isActive: Boolean,
     title: String,
   },

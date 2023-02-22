@@ -3,10 +3,20 @@
   align-items: center;
   justify-content: center;
   padding: 0 15px;
-  height: 40px;
+  height: $button-height;
   background-color: $primary;
   color: white;
   border-radius: 10px;
+  transition: 300ms all;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+
+  &:disabled {
+    background-color: $primary-light;
+    cursor: not-allowed;
+  }
 }
 
 .icon-button {
@@ -31,7 +41,7 @@
   }
 
   &:hover {
-    background-color: rgba($darkGray, 0.6);
+    background-color: rgba($dark-gray, 0.6);
   }
 }
 

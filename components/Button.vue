@@ -1,5 +1,10 @@
 <template>
-  <button class="button" @click="handleClick()">
+  <button
+    class="button"
+    :class="[className]"
+    v-bind="buttonAttrs"
+    @click="handleClick()"
+  >
     <slot></slot>
   </button>
 </template>
@@ -9,7 +14,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   components: {},
-  props: {},
+  props: {
+    className: String,
+    buttonAttrs: Object,
+  },
   data() {
     return {}
   },

@@ -1,0 +1,60 @@
+.select {
+  position: relative;
+
+  &.select--opened {
+    .select__options {
+      display: block;
+    }
+  }
+}
+
+.select__current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: $button-height;
+  padding: 0 10px;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.select__current-value {
+  color: $dark-gray;
+}
+
+.select__current-arrow {
+  height: 30px;
+
+  svg {
+    width: auto;
+    height: 100%;
+    margin-right: -5px;
+
+    path {
+      stroke: $dark-gray;
+    }
+  }
+}
+
+.select__options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 100;
+}
+
+.select__option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  height: $button-height;
+  color: $dark-gray;
+  cursor: pointer;
+}
