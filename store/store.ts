@@ -12,7 +12,7 @@ type State = {
 }
 
 export const state = (): State => ({
-  apiUrl: 'http://localhost:5000',
+  apiUrl: process.env.SERVER_ADDR ?? 'http://localhost:5000',
   isLoading: false,
   modals: {
     deleteUser: {
